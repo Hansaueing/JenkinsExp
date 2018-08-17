@@ -1,0 +1,37 @@
+apply plugin: 'com.android.application'
+
+android {
+    signingConfigs {
+        config {
+            keyAlias 'key_release'
+            keyPassword 'TNT999233'
+            storeFile file('H:/workspace/JinkensExp/hansaueing.jks')
+            storePassword 'TNT999233'
+        }
+    }
+    compileSdkVersion 22
+    defaultConfig {
+        applicationId "jenkinsexp.payne.com.jenkinsexp"
+        minSdkVersion 15
+        targetSdkVersion 22
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
+        }
+        debug {
+            signingConfig signingConfigs.config
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:22.+'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+}
